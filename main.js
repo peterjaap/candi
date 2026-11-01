@@ -209,29 +209,25 @@
   function initSignup() {
     const form = document.querySelector('[data-signup]');
     const status = document.querySelector('[data-signup-status]');
-    const endpoint = form.dataset.endpoint;
+    const button = form.querySelector('button');
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      const data = new FormData(form);
-      if (data.get('company')) return;
-      if (!endpoint) {
-        status.textContent = 'The list is not open yet. Check back soon.';
-        return;
-      }
+      button.disabled = true;
       status.textContent = 'Sending.';
       try {
-        const response = await fetch(endpoint, {
+        const response = await fetch(form.action, {
           method: 'POST',
-          body: data,
+          body: new FormData(form),
           headers: { Accept: 'application/json' },
         });
-        if (!response.ok) throw new Error(String(response.status));
-        form.reset();
-        status.textContent = 'You are on the list. Go skate.';
+        const { message } = await response.json();
+        status.textContent = message;
+        if (response.ok) form.reset();
       } catch (error) {
         status.textContent = 'That did not go through. Try again in a minute.';
       }
+      button.disabled = false;
     });
   }
 })();

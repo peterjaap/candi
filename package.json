@@ -1,0 +1,14 @@
+{
+  "name": "candi",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "export-signups": "node --env-file=.env.local scripts/export-signups.js"
+  },
+  "dependencies": {
+    "@vercel/blob": "2.8.2"
+  },
+  "overrides": {
+    "zod": "^4.6.6"
+  }
+}

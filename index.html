@@ -174,8 +174,7 @@
       <div class="signup__panel reveal">
         <h2 id="signup-title" class="signup__title">Get a bite first.</h2>
         <p class="signup__text">Leave your email. We tell you when the boards land.</p>
-        <!-- Set data-endpoint to the URL of the form service that collects the addresses. -->
-        <form class="signup__form" data-signup data-endpoint="" method="post">
+        <form class="signup__form" data-signup action="/api/signup" method="post">
           <label class="sr-only" for="email">Email address</label>
           <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@email.com">
           <input class="signup__trap" name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
