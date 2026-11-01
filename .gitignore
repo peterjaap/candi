@@ -1,0 +1,4 @@
+# Source images. The site uses the WebP versions in assets/.
+/*.png
+.vercel
+.DS_Store
